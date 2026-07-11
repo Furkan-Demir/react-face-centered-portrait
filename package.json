@@ -1,0 +1,53 @@
+{
+  "name": "react-face-centered-portrait",
+  "version": "0.1.0",
+  "description": "Headless React hook + drop-in components for a MediaPipe face-detected, auto-centered 9:16 portrait camera crop.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Furkan Demir <hi@fxdemir.com>",
+  "keywords": [
+    "react",
+    "mediapipe",
+    "face-detection",
+    "webcam",
+    "camera",
+    "video-call",
+    "portrait",
+    "crop"
+  ],
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.35"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "react": "^19",
+    "react-dom": "^19",
+    "tsup": "^8",
+    "typescript": "^5"
+  }
+}
