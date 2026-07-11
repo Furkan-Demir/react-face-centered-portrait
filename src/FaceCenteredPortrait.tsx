@@ -2,6 +2,7 @@
 
 import type { CSSProperties } from "react"
 
+import { CameraDevicePicker } from "./CameraDevicePicker"
 import { DebugInfoPanel } from "./DebugInfoPanel"
 import { RawCameraPreview } from "./RawCameraPreview"
 import type { FaceCenteredPortraitOptions } from "./types"
@@ -16,6 +17,8 @@ export interface FaceCenteredPortraitProps extends FaceCenteredPortraitOptions {
   showDebugCamera?: boolean
   /** Show the live status/face-center/crop-center stats panel. Default: true. */
   showDebugInfo?: boolean
+  /** Show the camera picker when more than one camera is available. Default: true. */
+  showDevicePicker?: boolean
   className?: string
   style?: CSSProperties
 }
@@ -88,6 +91,7 @@ export function FaceCenteredPortrait({
   showControls = true,
   showDebugCamera = true,
   showDebugInfo = true,
+  showDevicePicker = true,
   className,
   style,
   ...options
@@ -108,6 +112,9 @@ export function FaceCenteredPortrait({
     debugInfo,
     outputWidth,
     outputHeight,
+    devices,
+    deviceId,
+    selectDevice,
   } = useFaceCenteredPortrait(options)
 
   const isActive = status === "active"
@@ -160,6 +167,9 @@ export function FaceCenteredPortrait({
               {zoom.toFixed(1)}x
             </span>
           </div>
+          {showDevicePicker && (
+            <CameraDevicePicker devices={devices} deviceId={deviceId} onSelect={selectDevice} />
+          )}
         </div>
       )}
 

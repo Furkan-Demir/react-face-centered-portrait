@@ -12,9 +12,14 @@ export type { RawCameraPreviewProps } from "./RawCameraPreview"
 export { DebugInfoPanel } from "./DebugInfoPanel"
 export type { DebugInfoPanelProps } from "./DebugInfoPanel"
 
+export { CameraDevicePicker } from "./CameraDevicePicker"
+export type { CameraDevicePickerProps } from "./CameraDevicePicker"
+
 export type {
   FaceCenteredPortraitOptions,
   FaceCenteredPortraitStatus,
   FaceCenteredPortraitDebugInfo,
+  BackgroundEffectOptions,
+  FramingMode,
   Point,
 } from "./types"

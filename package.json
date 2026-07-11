@@ -5,6 +5,14 @@
   "type": "module",
   "license": "MIT",
   "author": "Furkan Demir <hi@fxdemir.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Furkan-Demir/react-face-centered-portrait.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Furkan-Demir/react-face-centered-portrait/issues"
+  },
+  "homepage": "https://github.com/Furkan-Demir/react-face-centered-portrait#readme",
   "keywords": [
     "react",
     "mediapipe",
