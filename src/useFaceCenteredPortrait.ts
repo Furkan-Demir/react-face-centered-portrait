@@ -1,6 +1,6 @@
 "use client"
 
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { RefObject } from "react"
 import { FaceDetector, FilesetResolver, type Detection } from "@mediapipe/tasks-vision"
 
@@ -467,25 +467,51 @@ export function useFaceCenteredPortrait(
     }
   }, [])
 
-  return {
-    videoRef,
-    canvasRef,
-    status,
-    error,
-    start,
-    stop,
-    autoCenter,
-    setAutoCenter,
-    zoom,
-    setZoom,
-    zoomMin,
-    zoomMax,
-    debugInfo,
-    outputWidth,
-    outputHeight,
-    devices,
-    deviceId,
-    selectDevice,
-    refreshDevices,
-  }
+  // Memoized so the returned object is only a new reference when a value a
+  // consumer could actually observe has changed. Without this, callers who
+  // (reasonably) put the whole result in a `useEffect` dependency array get
+  // an effect that re-fires on every render — e.g. a status change during
+  // `start()` can re-enter `start()` before a sibling effect reacts to it.
+  return useMemo(
+    () => ({
+      videoRef,
+      canvasRef,
+      status,
+      error,
+      start,
+      stop,
+      autoCenter,
+      setAutoCenter,
+      zoom,
+      setZoom,
+      zoomMin,
+      zoomMax,
+      debugInfo,
+      outputWidth,
+      outputHeight,
+      devices,
+      deviceId,
+      selectDevice,
+      refreshDevices,
+    }),
+    [
+      status,
+      error,
+      start,
+      stop,
+      autoCenter,
+      setAutoCenter,
+      zoom,
+      setZoom,
+      zoomMin,
+      zoomMax,
+      debugInfo,
+      outputWidth,
+      outputHeight,
+      devices,
+      deviceId,
+      selectDevice,
+      refreshDevices,
+    ],
+  )
 }

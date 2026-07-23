@@ -1,6 +1,6 @@
 {
   "name": "react-face-centered-portrait",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Headless React hook + drop-in components for a MediaPipe face-detected, auto-centered 9:16 portrait camera crop.",
   "type": "module",
   "license": "MIT",
